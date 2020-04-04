@@ -19,6 +19,7 @@ header{
     margin-left: 20%;
     overflow: hidden;
 }
+
 header h1{
     font-size:120%;
     color:#313131;
@@ -33,6 +34,7 @@ header h1{
     letter-spacing: 3px;
     font-weight:400;
     float: left;
+    background-color: rgb(208, 240, 202);
 }
  
 /*****NAV*****/
@@ -64,34 +66,32 @@ nav{
     nav ul li a:hover{
     background-color:rgb(225, 253, 214);
     }
-    nav ul li.current{
-    font-weight: bold;
-    }
-    nav ul li.current a{
+    nav ul .current a{
     border-bottom: 5px solid #00B0F0;
     color: #00B0F0;
     }
 
 /*****MAIN*****/
 .main {
-    margin: 50px;
-    background-color: rgb(230, 233, 233);
     padding-bottom: 10px;
+    background-color: rgb(247, 255, 245)
     }
 
 .main h2{
+    margin-top: 0px;
+    margin-left: 50px;
     margin-bottom: 0px;
 }
 
 p.infobox {
     margin: 50px;
-    margin-left: 25px;
+    margin-left: 75px;
     margin-right: 200px;
     margin-top: 0px;
     height: 6.3em;     /* 高さを制限(※) */
     overflow: scroll;  /* スクロールバーを表示(※) */
-    border: red 1px dashed;    /* 枠線を追加 */
-    background-color: #fff0f0; /* 背景色を追加 */
+    border: rgb(103, 184, 37) 1px dashed;    /* 枠線を追加 */
+    background-color: #ffffff; /* 背景色を追加 */
     }
 
 
@@ -101,7 +101,7 @@ footer{
     text-align: center;
     padding-top: 10px;
     padding-bottom: 10px;
-    background-color: #8f8a8a;
+    background-color: #c0bfbf;
 }
 footer address{
     color: #fff;
