@@ -73,14 +73,20 @@ nav{
 
 /*****MAIN*****/
 .main {
+    text-align: center;
     padding-bottom: 10px;
     background-color: rgb(247, 255, 245);
     margin: 30px;
     }
 
+.main h3{
+    margin: 50px;
+    text-align: left;
+}
+
 .main p{
     margin-top: 10px;
-    margin-left: 70px;
+    margin-left: 50px;
 }
 
 .main h2{
