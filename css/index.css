@@ -74,8 +74,14 @@ nav{
 /*****MAIN*****/
 .main {
     padding-bottom: 10px;
-    background-color: rgb(247, 255, 245)
+    background-color: rgb(247, 255, 245);
+    margin: 20px;
     }
+
+.main p{
+    margin-top: 10px;
+    margin-left: 50px;
+}
 
 .main h2{
     margin-top: 0px;
@@ -94,14 +100,13 @@ p.infobox {
     background-color: #ffffff; /* 背景色を追加 */
     }
 
-
 footer{
     font-size: 80%;
     width: 100%;
     text-align: center;
     padding-top: 10px;
     padding-bottom: 10px;
-    background-color: #c0bfbf;
+    background-color: #c9c7c7;
 }
 footer address{
     color: #fff;
