@@ -89,6 +89,11 @@ nav{
     margin-bottom: 0px;
 }
 
+.main .history{
+    margin-top: 50px;
+    margin-bottom: 5px;
+}
+
 p.infobox {
     margin: 50px;
     margin-left: 75px;
