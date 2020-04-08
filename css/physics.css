@@ -73,16 +73,10 @@ nav{
 
 /*****MAIN*****/
 .main {
-    text-align: center;
     padding-bottom: 10px;
     background-color: rgb(247, 255, 245);
     margin: 30px;
     }
-
-.main h3{
-    margin: 50px;
-    text-align: left;
-}
 
 .main p{
     margin-top: 10px;
@@ -94,17 +88,6 @@ nav{
     margin-left: 50px;
     margin-bottom: 0px;
 }
-
-p.infobox {
-    margin: 50px;
-    margin-left: 75px;
-    margin-right: 200px;
-    margin-top: 0px;
-    height: 6.3em;     /* 高さを制限(※) */
-    overflow: scroll;  /* スクロールバーを表示(※) */
-    border: rgb(103, 184, 37) 1px dashed;    /* 枠線を追加 */
-    background-color: #ffffff; /* 背景色を追加 */
-    }
 
 footer{
     font-size: 80%;
