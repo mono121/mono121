@@ -85,8 +85,11 @@ nav{
 
 .main h2{
     margin-top: 0px;
-    margin-left: 50px;
     margin-bottom: 0px;
+}
+
+.main ul{
+    margin-left: 50px;
 }
 
 footer{
