@@ -36,6 +36,27 @@
 
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.slim.min.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS_CHTML"></script>
+
+        <script>
+                // var preview = document.getElementById("livepreview");
+                // var liveeditor = document.getElementById('liveeditor');
+                // var editor =
+                // // codemirrorの設定
+                // CodeMirror.fromTextArea(liveeditor, {
+                //     mode: "stex",
+                //     lineNumbers: true
+                // });
+                // editor.save()
+
+                // エディタからリアルプレビューへ文字の変換と代入
+                $(document).ready(function () {
+                    editor.on('keyup', function () {
+                        mathval = editor.getValue().replace(/</g, "&lt;").replace(/>/g, "&gt;");
+                        $(preview).html(mathval);
+                        MathJax.Hub.Queue(["Typeset",MathJax.Hub,preview]);
+                        });
+                    });
+        </script>
     </head>
 
     <body>
@@ -93,14 +114,14 @@
                 });
                 editor.save()
 
-                // エディタからリアルプレビューへ文字の変換と代入
-                $(document).ready(function () {
-                    editor.on('keyup', function () {
-                        mathval = editor.getValue().replace(/</g, "&lt;").replace(/>/g, "&gt;");
-                        $(preview).html(mathval);
-                        MathJax.Hub.Queue(["Typeset",MathJax.Hub,preview]);
-                        });
-                    });
+                // // エディタからリアルプレビューへ文字の変換と代入
+                // $(document).ready(function () {
+                //     editor.on('keyup', function () {
+                //         mathval = editor.getValue().replace(/</g, "&lt;").replace(/>/g, "&gt;");
+                //         $(preview).html(mathval);
+                //         MathJax.Hub.Queue(["Typeset",MathJax.Hub,preview]);
+                //         });
+                //     });
         </script>
 
         <!-- ファイルの保存 -->
