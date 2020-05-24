@@ -1,0 +1,139 @@
+<!doctype html>
+<html>
+    <head>
+        <title>matheditor</title>
+        <meta charset="utf-8">
+        <link href="matheditor.css" rel="stylesheet" type="text/css">
+
+        <!-- Create a simple CodeMirror instance -->
+        <script src="lib/codemirror.js"></script>
+        <link rel="stylesheet" href="lib/codemirror.css">
+        <script src="stex.js"></script>
+
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({ 
+                "HTML-CSS": {
+                    availableFonts: ["STIX"],
+                    preferredFont: "STIX",
+                    webFont: "STIX-Web"
+                  },
+                tex2jax: { 
+                    inlineMath: [['$','$'], ["\\(","\\)"]] 
+                },
+                TeX: {
+                    equationNumbers: {
+                      autoNumber: "AMS"
+                    }
+                },
+                displayAlign: "left"
+            });
+        </script>
+
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.slim.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS_CHTML"></script>
+
+        <!-- <meta name="viewport" content="width=320, minimum-scale=1.0, maximum-scale=2.0"> -->
+
+         <!-- <script type="text/javascript">
+            $(function() {
+                function makePreview() {
+                input = $('#input').val().replace(/</g, "&lt;").replace(/>/g, "&gt;");
+                $('#livepreview').html(input);
+                MathJax.Hub.Queue(["Typeset",MathJax.Hub,"livepreview"]);
+                }
+                $('body').keyup(function(){makePreview()});
+                $('body').bind('updated',function(){makePreview()});
+                makePreview();
+            });
+        </script> -->
+
+        <script>
+            $(function() {
+                $('body').keyup(function() {
+                    input = $('#liveeditor'.val().replace(/</g, "&lt;").replace(/>/g, "&gt;"));
+                    $('#livepreview').html(input);
+                    MathJax.Hub.Queue(["Typeset",MathJax.Hub,"livepreview"]);
+                });
+            });
+        </script> 
+
+    </head>
+
+    <body>
+        <div class="editor-wrapper">
+            <div class="editor">
+                <p style="background-color: Black; color:white;">Editor</p>
+                <form name="js">
+                    <p>ページタイトル(ファイル名にも適用されます)</p>
+                    <input class="bottomspace" type="text" name="title" value="index"><br>
+
+                    <p>ページの内容(htmlタグが使えます)</p>
+                    <textarea id="liveeditor" name="htmlbody" rows="30" cols="50"></textarea>
+                </form>
+            </div>
+
+            <div class="preview">
+                <p style="background-color:Black; color:white;">Preview</p>
+                <div id="livepreview"></div>
+            </div>
+
+            <div class="procedure">
+                <p style="background-color:Black; color:white;">Procedure</p>
+                <button class="button" onclick="openmanual()">How to Use</button>
+                <button class="button" onclick="downloadfile()">Download</button>
+            </div>
+        </div>
+
+        <div class="footer">
+                Copyright &#169; 2016 Trouble_SUM All Rights Reserved.
+        </div>
+
+        <script>
+                var preview = document.getElementById("livepreview");
+                var liveeditor = document.getElementById('liveeditor');
+                var editor = 
+                CodeMirror.fromTextArea(liveeditor, {
+                    mode: "stex",
+                    lineNumbers: true
+                });
+                editor.save()
+
+                $(document).ready(function () {
+                    editor.on('keyup', function () {
+                        mathval = editor.getValue().replace(/</g, "&lt;").replace(/>/g, "&gt;");
+                        $(preview).html(mathval);
+                        MathJax.Hub.Queue(["Typeset",MathJax.Hub,preview]);
+                        });
+                    });
+        </script> 
+
+        <script type="text/javascript">
+            function downloadfile(){
+                //BOM
+                var bom = new Uint8Array([0xEF, 0xBB, 0xBF]);
+
+                //各フォームの値を取得
+                var title = document.js.title.value;
+                var htmlbody = document.js.htmlbody.value;
+
+                //htmlの内容を変数に格納
+                var html ="<html><head><title>" + title + "</title></head><body>" + htmlbody + "</body></html>"
+
+                //blobとしてhtmlファイルを生成
+                var blob = new Blob([bom, html],{type: "text/html;"})
+
+                //a要素を作成してクリックイベント実行
+                var a = document.createElement("a");
+                a.href = URL.createObjectURL(blob);
+                a.target = '_blank';
+                a.download = title + '.html';
+                a.click();
+            }
+
+            function openmanual(){
+                window.open('manual.html','_blank','top=50,left=50,width=500,height=500,scrollbars=1,location=0,menubar=0,toolbar=0,status=1,directories=0,resizable=1');
+                return false;
+                }
+        </script>
+    </body>
+</html>
