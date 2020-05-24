@@ -6,8 +6,8 @@
         <link href="matheditor.css" rel="stylesheet" type="text/css">
 
         <!-- pdfmake import file -->
-        <script src="pdfmake.min.js"></script>
-        <script src="vfs_fonts.js"></script>
+        <script src="pdfmake/pdfmake.min.js"></script>
+        <script src="pdfmake/vfs_fonts.js"></script>
 
         <!-- codemirror import file -->
         <script src="lib/codemirror.js"></script>
@@ -63,6 +63,21 @@
     </head>
 
     <body>
+
+            <header>
+                    <a href="index.html"><h1>理系院生の備忘録</h1></a>        
+                </header>
+            
+            <nav>
+              <ul>
+                <li ><a href="../index.html">トップページ</a></li>
+                <li class=”current”><a href="../about.html">このサイトについて</a></li>
+                <li><a href="../physics.html">物理</a></li>
+                <li><a href="matheditor.html">mathjaxeditor</a></li>
+                <li><a href="../other.html">その他</a></li>
+              </ul>
+            </nav>
+
         <div class="editor-wrapper">
             <div class="editor">
                 <p style="background-color: Black; color:white;">Editor</p>
@@ -77,12 +92,12 @@
 
             <div class="preview">
                 <p style="background-color:Black; color:white;">Preview</p>
-                <div id="livepreview"></div>
+                <div class="livepreview" id="livepreview"></div>
             </div>
 
             <div class="procedure">
                 <p style="background-color:Black; color:white;">Procedure</p>
-                <button class="button" onclick="openmanual()">How to Use</button>
+                <button class="button" onClick="pdfMake.createPdf(docDefinition).open();return false;">pdfを表示</button>
                 <button class="button" onclick="downloadfile()">Download</button>
             </div>
         </div>
@@ -120,7 +135,7 @@
 
                 //各フォームの値を取得
                 var title = document.js.title.value;
-                var mathtxt = document.js.htmlbody.value;
+                var mathtxt = document.js.mathtxt.value;
 
                 //htmlの内容を変数に格納
                 var html ="<html><head><title>" + title + "</title></head><body>" + mathtxt + "</body></html>"
@@ -135,6 +150,12 @@
                 a.download = title + '.html';
                 a.click();
             }
+        </script>
+
+        <script type="text/javascript">
+        var docDefinition = {
+            content: 'This is an sample PDF printed with pdfMake. 日本語のテスト'
+        };
         </script>
     </body>
 </html>
